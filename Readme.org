@@ -1,0 +1,52 @@
+#+options: toc:nil
+
+* Org-Roam-Link-Sanitizer
+When using a latex export on an org-roam file that has links to other org-roam files (which is most likely the case since that is the point of org-roam), it will fail with an error close to this
+#+begin_quote
+user-error: Unable to resolve link: "4d0545c9-aea1-41da-a2fd-20a154f4f76c"
+#+end_quote
+where the uid is a placeholder.
+
+Since I am using org-roam-ref, I want to have some sort of "sanitizer" functionality, that
+1. looks into the link
+2. decides to
+   - convert the link to the roam-ref file to a "plain" org-ref like [[cite:&hawkingBlackHoleExplosions1974]] in case there is a key ~:ROAM_REFS: cite:hawkingBlackHoleExplosions1974~ in the properties of the link at hand
+   - or simply discard the link at hand (probably something more sophisticated than ignoring will be due, but for now that shall be it)
+
+** Usage
+Put ~org-roam-link-sanitizer.el~ somewhere in you ~load-path~ and run the following in your configuration.
+#+begin_src elisp
+  (require 'org-roam-link-sanitizer)
+#+end_src
+
+Or with [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]] (given ~org-roam-link-sanitizer.el~ is added to ~load-path~ anyway)
+#+begin_src elisp
+  (use-package org-roam-link-sanitizer
+    :after org-roam)
+#+end_src
+
+
+** Installation
+Clone the repository
+#+begin_src sh
+  git clone https://codeberg.org/m-aXimilian/org-roam-link-sanitizer.git
+#+end_src
+
+Add the path to ~org-roam-link-sanitizer.el~ (lets assume it is ~/home/user/repos/org-roam-link-sanitizer/org-roam-link-sanitizer.el~) to ~load-path~ like
+#+begin_src elisp
+  (add-to-list 'load-path "/home/user/repos/org-roam-link-sanitizer")
+#+end_src
+
+Proceed with [[Usage][Usage]].
+
+** Author
+
++ Maximilian Kueffner (kueffnermax@gmail.com)
+
+** Copyright
+
+Copyright (c) 2024 Maximilian Kueffner (kueffnermax@gmail.com)
+
+** License
+
+Licensed under the GPL-3.0 License.
