@@ -1,4 +1,4 @@
-;;; org-roam-link-sanitizer.el --- Use ROAM_REFS as citekeys for linked documents that have a ROAM_REFS section.  -*- lexical-binding: t; -*-
+;;; org-roam-link-sanitizer.el --- Use ROAM_REFS as citekeys for linked documents that have a ROAM_REFS section.  -*- lexical-binding: nil; -*-
 
 ;; Copyright (C) 2024  Maximilian Kueffner
 
@@ -44,8 +44,8 @@ TODO:
 - Presumably, this only works for single roam-refs in file properties
  (one cite key only)?
 - Is multiple cite keys in the 'ROAM_REFS' tag even a sane thing? Probably yes.."
-  (let ((links nil)
-        (refs nil))
+  (let ((links)
+        (refs))
     (org-element-map (org-element-parse-buffer) 'link
       '(lambda (n)
          (let ((tp (org-element-property :type n))
