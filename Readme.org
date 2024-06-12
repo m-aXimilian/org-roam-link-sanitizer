@@ -17,6 +17,7 @@ Since I am using org-roam-ref, I want to have some sort of "sanitizer" functiona
 Put ~org-roam-link-sanitizer.el~ somewhere in you ~load-path~ and run the following in your configuration.
 #+begin_src elisp
   (require 'org-roam-link-sanitizer)
+  (add-to-list 'org-export-before-parsing-hook  #'link-sanitizer-sanitize-links-for-pdf-export)
 #+end_src
 
 Or with [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]] (given ~org-roam-link-sanitizer.el~ is added to ~load-path~ anyway)
@@ -37,7 +38,6 @@ Clone the repository
 Add the path to ~org-roam-link-sanitizer.el~ (lets assume it is ~/home/user/repos/org-roam-link-sanitizer/org-roam-link-sanitizer.el~) to ~load-path~ like
 #+begin_src elisp
   (add-to-list 'load-path "/home/user/repos/org-roam-link-sanitizer")
-  (add-to-list 'org-export-before-parsing-hook  #'link-sanitizer-sanitize-links-for-pdf-export)
 #+end_src
 
 Proceed with [[Usage][Usage]].
