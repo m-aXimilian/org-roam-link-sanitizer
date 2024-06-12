@@ -70,9 +70,11 @@ TODO:
                             (stringp (car id-path))
                             (file-exists-p (expand-file-name (car id-path))))
                    (progn
-                     (with-current-buffer (find-file-noselect (car (org-id-find path)))
-                       (save-excursion
-                         (funcall pusher))))))))
+                     (let ((path-link (or (org-id-find path)
+                                          (org-roam-id-find path))))
+                       (with-current-buffer (find-file-noselect (car (org-id-find path)))
+                         (save-excursion
+                           (funcall pusher)))))))))
             (t (message (format "Link sanitizing has no effect on links of type %s" tp)))))))
     (-zip links refs)))
 
@@ -105,8 +107,6 @@ It wraps `link-sanitizer--sanitize-links-for-export'."
   (when (org-export-derived-backend-p backend 'latex)
     (link-sanitizer--sanitize-links-for-export)
     (message "Link sanitizer for latex derived mode.")))
-
-(add-to-list 'org-export-before-parsing-functions #'link-sanitizer-sanitize-links-for-pdf-export)
 
 (provide 'org-roam-link-sanitizer)
 ;;; org-roam-link-sanitizer.el ends here
