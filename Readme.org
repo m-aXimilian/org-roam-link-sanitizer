@@ -7,7 +7,7 @@ user-error: Unable to resolve link: "4d0545c9-aea1-41da-a2fd-20a154f4f76c"
 #+end_quote
 where the uid is a placeholder.
 
-Since I am using org-roam-ref, I want to have some sort of "sanitizer" functionality, that
+Since I am using org-roam together with [[https://github.com/org-roam/org-roam-bibtex][org-roam-bibtex]], I want to have some sort of "sanitizer" functionality, that
 1. looks into the link
 2. decides to
    - convert the link to the roam-ref file to a "plain" org-ref like [[cite:&hawkingBlackHoleExplosions1974]] in case there is a key ~:ROAM_REFS: cite:hawkingBlackHoleExplosions1974~ in the properties of the link at hand
