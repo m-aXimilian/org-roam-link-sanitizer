@@ -42,14 +42,9 @@ Add the path to ~org-roam-link-sanitizer.el~ (lets assume it is ~/home/user/repo
 
 Proceed with [[Usage][Usage]].
 
-** Author
-
-+ Maximilian Kueffner (kueffnermax@gmail.com)
 
 ** Copyright
-
 Copyright (c) 2024 Maximilian Kueffner (kueffnermax@gmail.com)
 
 ** License
-
 Licensed under the GPL-3.0 License.
